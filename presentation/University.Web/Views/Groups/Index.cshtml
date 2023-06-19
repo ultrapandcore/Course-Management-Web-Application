@@ -1,0 +1,54 @@
+﻿@model IEnumerable<University.Web.Models.GroupModel>
+
+@{
+    ViewData["Title"] = "Groups";
+}
+
+<h1 class="mb-2 fw-bold">Groups</h1>
+
+<div class="btn btn-dark">
+    <a asp-action="Create" class="text-decoration-none text-white fw-bold">Create New</a>
+</div>
+
+<div class="mt-2">
+    <div class="row bg-dark text-warning mx-0 p-2 fw-bold">
+        <div class="col-1">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="col-2">
+            @Html.DisplayNameFor(model => model.Courses)
+        </div>
+        <div class="col-2">
+            @Html.DisplayNameFor(model => model.Students)
+        </div>
+        <div class="col-3">
+            Options
+        </div>
+    </div>
+    <div class="container">
+        @foreach (var item in Model) {
+            <div class="row p-1">
+                <div class="col-1 fw-bold pt-3">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+                <div class="col-2">
+                    @foreach (var course in item.Courses)
+                    {
+                        @course.Name <br />
+                    }
+                </div>
+                <div class="col-2">
+                    @foreach (var student in item.Students)
+                    {
+                        <span>@student.FirstName @student.LastName<br/></span>
+                    }
+                </div>
+                <div class="col-3">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

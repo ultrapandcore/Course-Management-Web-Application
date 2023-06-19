@@ -1,0 +1,60 @@
+﻿@model IEnumerable<University.Web.Models.StudentModel>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1 class="mb-2 fw-bold">Students</h1>
+
+<div class="btn btn-dark">
+    <a asp-action="Create" class="text-decoration-none text-white fw-bold">Create New</a>
+</div>
+
+<div class="mt-2">
+    <div class="row bg-dark text-warning mx-0 p-2 fw-bold">
+        <div class="col-1">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </div>
+        <div class="col-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="col-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </div>
+        <div class="col-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </div>
+        <div class="col-1">
+            Group
+        </div>
+        <div class="col-3">
+            Options
+        </div>
+    </div>
+    <div class="container">
+        @foreach (var item in Model) {
+                <div class="row p-1">
+                    <div class="col-1 fw-bold">
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </div>
+                    <div class="col-2 fw-bold">
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </div>
+                    <div class="col-2">
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </div>
+                    <div class="col-2">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </div>
+                    <div class="col-1">
+                            @Html.DisplayFor(modelItem => item.Group.Name)
+                    </div>
+                    <div class="col-3">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> 
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a> 
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
