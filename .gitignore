@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/presentation/University.Web/University.db
+/presentation/University.Web/University.db-shm
+/presentation/University.Web/University.db-wal
